@@ -30,6 +30,7 @@ const Result = () => {
   const [windowDimension, setWindowDimension] = useState({ width: window.innerWidth, height: window.innerHeight });
   const [showConfetti, setShowConfetti] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,8 +49,37 @@ const Result = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsGenerating(true);
+    setSubmitSuccess(false);
+    
     try {
+      // Google Form submission
+      const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSegEguKBYEp5TkYuuIcyXoFjlhqZo3quWetDS4u8PnIAz-sGg/formResponse";
+      
+      // Create form data
+      const formData = new URLSearchParams();
+      formData.append("entry.189589671", userDetails.name); // Full Name
+      formData.append("entry.614412607", userDetails.phone); // Phone Number
+      formData.append("entry.1371895374", userDetails.email); // Email
+      
+      // Submit to Google Form
+      await fetch(googleFormUrl, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors",
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+      
+      setSubmitSuccess(true);
+      console.log('Form data submitted successfully');
+      
+      // Generate and download PDF
       await generatePDF();
+      
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
     } finally {
       setIsGenerating(false);
     }
@@ -426,6 +456,11 @@ const Result = () => {
                   />
                 </div>
               </div>
+              {submitSuccess && (
+                <div className="mb-4 p-3 bg-green-100 text-green-700 rounded-lg">
+                  Details submitted successfully!
+                </div>
+              )}
               <div className="mt-6">
                 <button
                   type="submit"
