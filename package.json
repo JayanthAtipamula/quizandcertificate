@@ -10,10 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^5.1.0",
+    "@fontsource/pinyon-script": "^5.1.0",
+    "@fontsource/playfair-display": "^5.1.0",
+    "@pdf-lib/standard-fonts": "^1.0.0",
     "framer-motion": "^11.11.17",
     "html2canvas": "^1.4.1",
     "jspdf": "^2.5.2",
     "lucide-react": "^0.344.0",
+    "pdf-lib": "^1.17.1",
     "react": "^18.3.1",
     "react-confetti": "^6.1.0",
     "react-dom": "^18.3.1",
