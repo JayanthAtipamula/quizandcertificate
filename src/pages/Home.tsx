@@ -28,9 +28,23 @@ const Home = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => navigate('/quiz')}
-          className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 px-8 rounded-full text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+          className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold 
+            py-3 px-8 rounded-full text-lg 
+            shadow-lg hover:shadow-xl transition-all duration-300
+            relative overflow-hidden
+            animate-pulse-slow
+            hover:animate-none
+            before:absolute before:inset-0
+            before:bg-gradient-to-r before:from-white/20 before:via-white/0 before:to-white/20
+            before:animate-shimmer
+            after:absolute after:inset-0 
+            after:bg-gradient-to-r after:from-transparent after:via-white/25 after:to-transparent 
+            after:blur-md after:opacity-0 hover:after:opacity-100
+            after:transition-opacity after:duration-500"
         >
-          Start Quiz
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            Start Quiz
+          </span>
         </motion.button>
         
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">

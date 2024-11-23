@@ -366,9 +366,23 @@ const Result = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowForm(true)}
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-2 px-6 sm:py-3 sm:px-8 rounded-full text-base sm:text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold 
+                py-2 px-6 sm:py-3 sm:px-8 rounded-full text-base sm:text-lg 
+                shadow-lg hover:shadow-xl transition-all duration-300
+                relative overflow-hidden
+                animate-pulse-slow
+                hover:animate-none
+                before:absolute before:inset-0
+                before:bg-gradient-to-r before:from-white/20 before:via-white/0 before:to-white/20
+                before:animate-shimmer
+                after:absolute after:inset-0 
+                after:bg-gradient-to-r after:from-transparent after:via-white/25 after:to-transparent 
+                after:blur-md after:opacity-0 hover:after:opacity-100
+                after:transition-opacity after:duration-500"
             >
-              Get Your Certificate
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                Get Your Certificate
+              </span>
             </motion.button>
           </div>
         ) : (
